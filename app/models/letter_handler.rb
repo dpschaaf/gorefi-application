@@ -1,12 +1,13 @@
 class LetterHandler < ActionMailer::Base
-   default from: 'no-reply@example.com',
-          return_path: 'system@example.com'
+  default from: 'david.p.schaaf@gmail.com',
+          return_path: 'david.p.schaaf@gmail.com',
+          subject: "Your Pre-Approval Letter",
+          body: "Please find attached your mortgage pre-approval letter from GoRefi."
 
-  def send_pre_approval_letter(loan)
-    @account = recipient
-    mail(to: recipient.email_address_with_name)
-    attachments["GoRefi_Pre_Approval_Letter-#{loan.id}"] = File.read("app/assets/pdfs/126539_statistics.pdf")
-mail(:to => email, :subject => subject, :body => message,  :content_type => 'application/pdf')
+  def self.send_pre_approval_letter(loan)
+    attachments["GoRefi_Pre_Approval_Letter-#{loan.id}.pdf"] = File.read("public/pdfs/GoRefi_Pre_Approval_Letter-#{loan.id}.pdf")
+    mail(to: loan.email)
+    deliver
   end
 
 end

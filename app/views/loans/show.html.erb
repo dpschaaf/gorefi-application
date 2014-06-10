@@ -1,7 +1,15 @@
-Congratulations you have been pre-approved!
+<p>Congratulations you have been pre-approved!</p>
 
-The maximum loan you qualify for is <%= @loan.max_home_amount %>
+<p>The maximum loan you qualify for is <%= @loan.max_home_amount %></p>
 
-<%= form_for @loan %>
+<p>To Receive your Pre-Approval Letter, enter your full name and e-mail address below:</p>
 
+<%= form_for @loan do |f|%>
+  <%= f.label :full_name %>
+  <%= f.text_field :full_name %>
+
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+
+  <%= f.submit %>
 <% end %>

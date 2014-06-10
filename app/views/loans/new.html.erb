@@ -3,23 +3,23 @@
 <h2>Enter a few details and get pre-approved for your mortgage in just minutes</h2>
 
 
-<%= form_for @loan do %>
+<%= form_for @loan do |f| %>
 
-  <%= label_tag :state %>
-  <%= text_field_tag :state %><br>
+  <%= f.label :state %>
+  <%= f.text_field :state %><br>
 
-  <%= label_tag :fico %>
-  <%= text_field_tag :fico %><br>
+  <%= f.label :fico %>
+  <%= f.text_field :fico %><br>
 
-  <%= label_tag :annual_gross_income %>
-  <%= text_field_tag :annual_gross_income %><br>
+  <%= f.label :annual_gross_income %>
+  <%= f.text_field :annual_gross_income %><br>
 
-  <%= label_tag :monthly_debt %>
-  <%= text_field_tag :monthly_debt %><br>
+  <%= f.label :monthly_debt %>
+  <%= f.text_field :monthly_debt %><br>
 
   <%= label_tag :downpayment %>
   <%= text_field_tag :downpayment %><br>
 
-  <%= submit_tag 'Get pre-approved' %>
+  <%= f.submit 'Get pre-approved' %>
 
 <% end %>

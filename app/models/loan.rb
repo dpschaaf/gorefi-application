@@ -1,6 +1,6 @@
 class Loan < ActiveRecord::Base
 
-  attr_accessible :annual_gross_income, :monthly_debt, :downpayment_amount, :downpayment_percent, :fico, :state
+  attr_accessible :annual_gross_income, :monthly_debt, :downpayment_amount, :downpayment_percent, :fico, :state, :email, :full_name
 
 
   def initialize

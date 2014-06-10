@@ -7,7 +7,7 @@ class LoansController < ApplicationController
 
   def create
     @loan = Loan.new
-    @loan.update_attributes state: params[:state], fico: params[:fico].to_i, annual_gross_income: params[:annual_gross_income].to_i, monthly_debt: params[:monthly_debt].to_i
+    @loan.update_attributes params[:loan]
 
     if params[:downpayment].to_f < 1
       params[:downpayment].to_f
@@ -20,10 +20,19 @@ class LoansController < ApplicationController
     @loan.calculate_loan_details
     @loan.save
 
-    PdfGenerator.pre_approval_letter(@loan)
-
     redirect_to loan_path @loan
   end
+
+  def update
+    @loan = Loan.find params[:id]
+    @loan.update_attributes params[:loan]
+    @loan.save
+    PdfGenerator.pre_approval_letter(@loan)
+    LetterHandler.send_pre_approval_letter(@loan)
+    redirect_to root_path
+  end
+
+
 
   def show
     @loan = Loan.find params[:id]
