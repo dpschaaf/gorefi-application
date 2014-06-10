@@ -26,11 +26,9 @@ class LoansController < ApplicationController
     @loan.update_attributes params[:loan]
     @loan.save
     PdfGenerator.pre_approval_letter(@loan)
-    LetterHandler.new.send_pre_approval_letter(@loan)
+    LetterHandler.pre_approval_letter(@loan).deliver
     redirect_to root_path
   end
-
-
 
   def show
     @loan = Loan.find params[:id]
