@@ -1,0 +1,25 @@
+<h1>Get Pre-Approved </h1>
+
+<h2>Enter a few details and get pre-approved for your mortgage in just minutes</h2>
+
+
+<%= form_for @loan do |f| %>
+
+  <%= label_tag :state %>
+  <%= text_field_tag :state %><br>
+
+  <%= label_tag :fico %>
+  <%= text_field_tag :fico %><br>
+
+  <%= label_tag :annual_gross_income %>
+  <%= text_field_tag :annual_gross_income %><br>
+
+  <%= label_tag :monthly_debt %>
+  <%= text_field_tag :monthly_debt %><br>
+
+  <%= label_tag :downpayment %>
+  <%= text_field_tag :downpayment %><br>
+
+  <%= submit_tag 'Get pre-approved' %>
+
+<% end %>
