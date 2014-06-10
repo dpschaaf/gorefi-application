@@ -2,7 +2,6 @@ class Loan < ActiveRecord::Base
 
   attr_accessible :annual_gross_income, :monthly_debt, :downpayment_amount, :downpayment_percent, :fico, :state, :email, :full_name
 
-
   def initialize
     super
     @interest_rate = 0.0425
@@ -17,6 +16,7 @@ class Loan < ActiveRecord::Base
     calc_downpayment_percent
     calc_downpayment_amount
     calc_loan_amount
+    calc_monthly_payment
   end
 
   private
@@ -36,5 +36,10 @@ class Loan < ActiveRecord::Base
   def calc_loan_amount
     self.loan_amount = self.max_home_amount - self.downpayment_amount
   end
+
+  def calc_monthly_payment
+    self.monthly_payment = self.max_home_amount *  (@monthly_interest_rate / (1 - (1 + @monthly_interest_rate)** (-@number_of_months)))
+  end
+
 
 end

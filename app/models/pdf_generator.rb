@@ -2,6 +2,7 @@ class PdfGenerator
 
   @@pdf_path = "public/pdfs/"
 
+
   def self.pre_approval_letter(loan)
     Prawn::Document.generate("#{@@pdf_path}GoRefi_Pre_Approval_Letter-#{loan.id}.pdf") do
       image "public/GoRefi-logo.png"

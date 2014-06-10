@@ -10,10 +10,8 @@ class LoansController < ApplicationController
     @loan.update_attributes params[:loan]
 
     if params[:downpayment].to_f < 1
-      params[:downpayment].to_f
       @loan.update_attribute :downpayment_percent, params[:downpayment].to_f
     else
-      params[:downpayment].to_i
       @loan.update_attribute :downpayment_amount, params[:downpayment].to_i
     end
 
@@ -28,7 +26,7 @@ class LoansController < ApplicationController
     @loan.update_attributes params[:loan]
     @loan.save
     PdfGenerator.pre_approval_letter(@loan)
-    LetterHandler.send_pre_approval_letter(@loan)
+    LetterHandler.new.send_pre_approval_letter(@loan)
     redirect_to root_path
   end
 
