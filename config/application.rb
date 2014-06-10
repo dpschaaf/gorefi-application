@@ -9,6 +9,9 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+#Adding Environment variables from .env file
+Dotenv.load
+
 module Gorefi
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

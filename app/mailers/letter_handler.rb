@@ -5,7 +5,7 @@ class LetterHandler < ActionMailer::Base
 
   def pre_approval_letter(loan)
     @loan = loan
-    attachments["GoRefi_Pre_Approval_Letter-#{@loan.id}.pdf"] = File.read("#{PdfGenerator.letter_name}#{@loan.id}.pdf")
+    attachments["#{PdfGenerator.letter_title}#{@loan.id}.pdf"] = File.read("#{PdfGenerator.letter_path}#{@loan.id}.pdf")
     mail(to: @loan.email)
   end
 

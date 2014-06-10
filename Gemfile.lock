@@ -38,6 +38,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    dotenv (0.11.1)
+      dotenv-deployment (~> 0.0.2)
+    dotenv-deployment (0.0.2)
     erubis (2.7.0)
     execjs (2.2.0)
     hike (1.2.3)
@@ -110,6 +113,7 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   coffee-rails (~> 3.2.1)
+  dotenv
   jquery-rails
   prawn
   rails (= 3.2.18)

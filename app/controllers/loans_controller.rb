@@ -8,16 +8,9 @@ class LoansController < ApplicationController
   def create
     @loan = Loan.new
     @loan.update_attributes params[:loan]
-
-    if params[:downpayment].to_f < 1
-      @loan.update_attribute :downpayment_percent, params[:downpayment].to_f
-    else
-      @loan.update_attribute :downpayment_amount, params[:downpayment].to_i
-    end
-
+    @loan.update_attribute params[:downpayment][:type], params[:downpayment][:value].to_f
     @loan.calculate_loan_details
     @loan.save
-
     redirect_to loan_path @loan
   end
 

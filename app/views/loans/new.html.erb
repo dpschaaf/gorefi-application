@@ -1,7 +1,9 @@
+
+<img src="https://d36csm6pmnryl5.cloudfront.net/assets/logo-f30b4ce778a1eecdde75a46b27ff835d.png">
+
 <h1>Get Pre-Approved </h1>
 
 <h2>Enter a few details and get pre-approved for your mortgage in just minutes</h2>
-
 
 <%= form_for @loan do |f| %>
 
@@ -17,9 +19,13 @@
   <%= f.label :monthly_debt %>
   <%= f.text_field :monthly_debt %><br>
 
-  <%= label_tag :downpayment %>
-  <%= text_field_tag :downpayment %><br>
+  <%= button_tag '$', value: :downpayment_amount, type: :button, id: :amount_button,name: 'downpayment[type]', class: "btn btn-default"  %>
+  <%= button_tag '%', value: :downpayment_percent, type: :button, id: :percent_button, name: 'downpayment[type]', class: "btn btn-default"  %>
+  <%= hidden_field_tag :'downpayment[type]' %><br>
 
-  <%= f.submit 'Get pre-approved' %>
+  <%= label_tag :'downpayment[value]', 'Downpayment' %>
+  <%= text_field_tag :'downpayment[value]'%><br>
+
+  <%= f.submit 'Get pre-approved', class: "btn btn-default" %>
 
 <% end %>

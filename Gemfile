@@ -8,6 +8,8 @@ gem 'rails', '3.2.18'
 gem 'sqlite3'
 gem 'awesome_print'
 gem 'prawn'
+gem 'dotenv'
+
 
 
 # Gems used only for assets and not required

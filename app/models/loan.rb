@@ -13,8 +13,7 @@ class Loan < ActiveRecord::Base
 
   def calculate_loan_details
     calc_max_home_amount
-    calc_downpayment_percent
-    calc_downpayment_amount
+    calc_downpayments
     calc_loan_amount
     calc_monthly_payment
   end
@@ -23,6 +22,11 @@ class Loan < ActiveRecord::Base
 
   def calc_max_home_amount
     self.max_home_amount = (0.5 * self.annual_gross_income/12 - self.monthly_debt ) / ((@monthly_interest_rate / (1 - (1 + @monthly_interest_rate)**(-@number_of_months))) + @tax_rate + @insurance_percent)
+  end
+
+  def calc_downpayments
+    calc_downpayment_percent unless self.downpayment_percent
+    calc_downpayment_amount  unless self.downpayment_amount
   end
 
   def calc_downpayment_percent
