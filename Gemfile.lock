@@ -52,8 +52,11 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     multi_json (1.10.1)
-    pg (0.17.1)
+    pdf-core (0.2.5)
     polyglot (0.3.5)
+    prawn (1.0.0)
+      pdf-core (~> 0.2.2)
+      ttfunk (~> 1.1.1)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -95,6 +98,7 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
+    ttfunk (1.1.1)
     tzinfo (0.3.39)
     uglifier (2.5.0)
       execjs (>= 0.3.0)
@@ -107,7 +111,7 @@ DEPENDENCIES
   awesome_print
   coffee-rails (~> 3.2.1)
   jquery-rails
-  pg
+  prawn
   rails (= 3.2.18)
   sass-rails (~> 3.2.3)
   sqlite3

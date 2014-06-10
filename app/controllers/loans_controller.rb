@@ -19,8 +19,9 @@ class LoansController < ApplicationController
 
     @loan.calculate_loan_details
     @loan.save
-    p '*******'
-    p @loan
+
+    PdfGenerator.pre_approval_letter(@loan)
+
     redirect_to loan_path @loan
   end
 
