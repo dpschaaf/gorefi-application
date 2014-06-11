@@ -1,3 +1,5 @@
+<div class='home'>
+
 <h1>Get Pre-Approved </h1>
 <h2>Enter a few details and get pre-approved for your mortgage in just minutes</h2>
 <div class='container form_container'>
@@ -15,34 +17,12 @@
     <br>
   </div>
 
-  <div class='row form_field' data-container="body" data-toggle="popover" data-placement="right" data-content="What is your annual income?" data-original-title="" title="" data-trigger="hover" rel='popover' >
-    <%= f.label :annual_gross_income, class: 'col-xs-8' %>
-    <%= f.text_field :annual_gross_income, value: :'$70,000', class: 'col-xs-4' %>
-    <br>
-  </div>
-
-  <div class='row form_field' data-container="body" data-toggle="popover" data-placement="right" data-content="How much do you spend each month?" data-original-title="" title="" data-trigger="hover" rel='popover' >
-    <%= f.label :monthly_debt, class: 'col-xs-8' %>
-    <%= f.text_field :monthly_debt, value: :'$1,000', class: 'col-xs-4' %>
-    <br>
-  </div>
-
-  <div class='row form_field'>
-    <div class='col-xs-6'>
-      <%= button_tag '$', value: :downpayment_amount, type: :button, id: :amount_button,name: 'downpayment[type]', class: "btn btn-default" %>
-      <%= button_tag '%', value: :downpayment_percent, type: :button, id: :percent_button, name: 'downpayment[type]', class: "btn btn-default"  %>
-      <%= hidden_field_tag :'downpayment[type]' %>
-    </div>
-  </div>
-
-  <div class='row form_field' data-container="body" data-toggle="popover" data-placement="right" data-content="How much are you planning to pay down?" data-original-title="" title="" data-trigger="hover" rel='popover' >
-    <%= label_tag :'downpayment[value]', 'Downpayment', class: 'col-xs-8' %>
-    <%= text_field_tag :'downpayment[value]', :'$50,000', class: 'col-xs-4'%>
-    <br>
-  </div>
+  <%= render partial: 'form_inputs', locals: {loan: @loan, f: f} %>
 
   <%= f.submit 'Get pre-approved', class: "btn btn-default" %>
 
   <% end %>
+
+</div>
 
 </div>
