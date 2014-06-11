@@ -11,28 +11,36 @@ class LoansController < ApplicationController
     update_loan_attributes @loan, params
     @loan.calculate_loan_details
     @loan.save
-    redirect_to loan_path @loan
+    redirect_to edit_loan_path @loan
   end
 
   def update
     @loan = Loan.find params[:id]
-    @loan.update_attributes params[:loan]
+    update_loan_attributes @loan, params
+    @loan.calculate_loan_details
     @loan.save
     PdfGenerator.pre_approval_letter(@loan)
     LetterHandler.pre_approval_letter(@loan).deliver
     redirect_to root_path
   end
 
-  def show
+  def calculator
+    @loan = Loan.find params[:id]
+    update_loan_attributes @loan, params
+    @loan.calculate_loan_details
+    @loan.save
+    render partial: 'calculator', locals: {loan: @loan}
+  end
+
+  def edit
     @loan = Loan.find params[:id]
   end
 
   private
 
   def update_loan_attributes loan, params
-    @loan.update_attributes sanitized_loan_params(params[:loan])
-    p params
-    @loan.update_attribute params[:downpayment][:type], sanitized_downpayment_params(params[:downpayment])
+    loan.update_attributes sanitized_loan_params(params[:loan])
+    loan.update_attribute params[:downpayment][:type], sanitized_downpayment_params(params[:downpayment])
   end
 
   def sanitized_loan_params args
@@ -43,9 +51,9 @@ class LoansController < ApplicationController
 
   def sanitized_downpayment_params args
     if args[:type] == 'downpayment_amount'
-      p sanitize_integer(args[:value])
+      sanitize_integer(args[:value])
     else
-      p sanitize_float(args[:value])
+      sanitize_float(args[:value])
     end
   end
 

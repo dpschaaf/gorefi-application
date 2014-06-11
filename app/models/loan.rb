@@ -50,8 +50,27 @@ class Loan < ActiveRecord::Base
   end
 
   def calc_monthly_payment
-    self.monthly_payment = self.max_home_amount *  (@monthly_interest_rate / (1 - (1 + @monthly_interest_rate)** (-@number_of_months)))
+    self.monthly_payment = self.max_home_amount *  (monthly_interest_rate / (1 - (1 + monthly_interest_rate)** (-number_of_months)))
   end
 
+  def interest_rate
+    0.0425
+  end
+
+  def insurance_percent
+    0.0035
+  end
+
+  def tax_rate
+    0.0115 / 12
+  end
+
+  def number_of_months
+    30 * 12
+  end
+
+  def monthly_interest_rate
+    interest_rate / 12
+  end
 
 end
