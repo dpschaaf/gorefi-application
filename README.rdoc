@@ -1,3 +1,11 @@
 == GoRefi Application
 
+This application will accept inputs from a user and calculate their maximum mortgage amount
+
+The landing page sanitizes the inputs to accept multiple types of data
+The downpayment field can be entered as either a dollar amount or as a percent
+
+The second page shows the loan amount and details for which the user has been pre-approved
+The user can adjust inputs and have the results dynamically updated to the page
+Then the user can enter their full name and email address to have the pre-approval letter emailed to them
 
