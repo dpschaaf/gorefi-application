@@ -1,0 +1,26 @@
+img {
+  margin: 20px 0;
+}
+
+h1, h2 {
+  font-family: 'Roboto', sans-serif;
+}
+
+.form_container {
+  margin-top: 50px;
+  margin-left: 10%;
+  width: 50%;
+}
+
+input {
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 1.3em;
+}
+
+p {
+  font-size: 1.3em;
+}
+
