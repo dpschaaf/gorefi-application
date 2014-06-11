@@ -1,6 +1,6 @@
 class LetterHandler < ActionMailer::Base
 
-  default from: 'david.p.schaaf@gmail.com',
+  default from: 'gorefipreapproval@gmail.com',
           subject: "Your Pre-Approval Letter from GoRefi"
 
   def pre_approval_letter(loan)

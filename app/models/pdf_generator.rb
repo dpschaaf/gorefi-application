@@ -12,10 +12,10 @@ class PdfGenerator
   end
 
   def self.pre_approval_letter(loan)
-    Prawn::Document.generate("#{PdfGenerator.letter_name}#{loan.id}.pdf") do
+    Prawn::Document.generate("#{PdfGenerator.letter_path}#{loan.id}.pdf") do
       image "public/GoRefi-logo.png"
       move_down 100
-      text "The maximum loan you qualify for is $#{number_with_delimiter(loan.loan_amount, :delimiter => ',')}."
+      text "The maximum loan you qualify for is $#{loan.display_max_home_amount}."
       move_down 100
       text "Thank you for choosing GoRefi."
     end

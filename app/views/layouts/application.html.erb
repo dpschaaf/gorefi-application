@@ -2,15 +2,19 @@
 <html>
 <head>
   <title>GoRefi</title>
+  <%= javascript_include_tag "application" %>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
+
   <div class="container clearfix">
+    <img src="https://d36csm6pmnryl5.cloudfront.net/assets/logo-f30b4ce778a1eecdde75a46b27ff835d.png">
     <%= yield %>
   </div>
 </body>
