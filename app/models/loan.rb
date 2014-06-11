@@ -18,6 +18,14 @@ class Loan < ActiveRecord::Base
     calc_monthly_payment
   end
 
+  def display_max_home_amount
+    self.max_home_amount.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+  end
+
+  def display_downpayment_amount
+    self.downpayment_amount.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+  end
+
   private
 
   def calc_max_home_amount
