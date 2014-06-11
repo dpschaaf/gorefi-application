@@ -1,0 +1,25 @@
+<div class='row form_field' data-container="body" data-toggle="popover" data-placement="right" data-content="What is your annual income?" data-original-title="" title="" data-trigger="hover" rel='popover' >
+    <%= f.label :annual_gross_income, class: 'col-xs-8' %>
+    <%= f.text_field :annual_gross_income, value: "$#{@loan.display_annual_gross_income}", class: 'col-xs-4' %>
+    <br>
+  </div>
+
+  <div class='row form_field' data-container="body" data-toggle="popover" data-placement="right" data-content="How much do you spend each month?" data-original-title="" title="" data-trigger="hover" rel='popover' >
+    <%= f.label :monthly_debt, class: 'col-xs-8' %>
+    <%= f.text_field :monthly_debt, value: "$#{@loan.display_monthly_debt}", class: 'col-xs-4' %>
+    <br>
+  </div>
+
+  <div class='row form_field'>
+    <div class='col-xs-6'>
+      <%= button_tag '$', value: :downpayment_amount, type: :button, id: :amount_button,name: 'downpayment[type]', class: "btn btn-default btn-success" %>
+      <%= button_tag '%', value: :downpayment_percent, type: :button, id: :percent_button, name: 'downpayment[type]', class: "btn btn-default"  %>
+      <%= hidden_field_tag :'downpayment[type]', :downpayment_amount %>
+    </div>
+  </div>
+
+  <div class='row form_field' data-container="body" data-toggle="popover" data-placement="right" data-content="How much are you planning to pay down?" data-original-title="" title="" data-trigger="hover" rel='popover' >
+    <%= label_tag :'downpayment[value]', 'Downpayment', class: 'col-xs-8' %>
+    <%= text_field_tag :'downpayment[value]', "$#{@loan.display_downpayment_amount}", class: 'col-xs-4'%>
+    <br>
+  </div>
